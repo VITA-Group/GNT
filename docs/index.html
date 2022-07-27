@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>GNT</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    </head>
+    <body>
+        <div class="container" id="main">
+            <div class="row">
+                <h2 class="col-md-12 text-center">
+                    Is Attention All NeRF Needs?
+                    <small>
+                    </small>
+                </h2>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                            Mukund Varma T<sup>1*</sup>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://peihaowang.github.io/">
+                            Peihao Wang<sup>2*</sup>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://xxchen.site/">
+                            Xuxi Chen<sup>2</sup>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <a href="https://tianlong-chen.github.io/">
+                            Tianlong Chen<sup>2</sup>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://vsubhashini.github.io/">
+                            Subhashini Venugopalan<sup>3</sup>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://vita-group.github.io/">
+                            Zhangyang Wang<sup>2</sup>
+                            </a>
+                        </li>
+                        <br>
+                        <li>
+                            <sup>1</sup>Indian Institute of Technology Madras
+                        </li>
+                        <li>
+                            <sup>2</sup>University of Austin at Texas
+                        </li>
+                        <li>
+                            <sup>3</sup>Google Research
+                        </li>
+                        <br>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                                <image src="assets/pdf.png" height="80px">
+                                <h4><strong>Paper</strong></h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/VITA-Group/GNT">
+                                <image src="assets/github.png" height="80px">
+                                <h4><strong>Code</strong></h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <center>
+                        <video id="v0" width="32%" autoplay loop muted controls>
+                            <source src="assets/horns.mp4" type="video/mp4" />
+                        </video>
+                        <video id="v0" width="32%" autoplay loop muted controls>
+                            <source src="assets/orchids.mp4" type="video/mp4" />
+                        </video>
+                        <video id="v0" width="32%" autoplay loop muted controls>
+                            <source src="assets/trex.mp4" type="video/mp4" />
+                        </video>
+                    </center>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Rendered images on the LLFF dataset using GNT
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Abstract
+                    </h3>
+                    <p class="text-justify">
+                        We present <i>Generalizable NeRF Transformer</i> (<b>GNT</b>), a pure, unified transformer-based architecture that efficiently reconstructs Neural Radiance Fields (NeRFs) on the fly from source views.
+                        Unlike prior works on NeRF that optimize a <i>per-scene</i> implicit representation by inverting a handcrafted rendering equation, GNT achieves <i>generalizable</i> neural scene representation and rendering, by encapsulating two transformers-based stages.
+                        The first stage of GNT, called <i>view transformer</i>, leverages multi-view geometry as an inductive bias for attention-based scene representation, and predicts coordinate-aligned features by aggregating information from epipolar lines on the neighboring views.
+                        The second stage of GNT, named <i>ray transformer</i>, renders novel views by ray marching and directly decodes the sequence of sampled point features using the attention mechanism.
+                        Our experiments demonstrate that when optimized on a single scene, GNT can successfully reconstruct NeRF without explicit rendering formula, and even improve the PSNR by ~1.3 dB&#8593 on complex scenes due to the learnable ray renderer.
+                        When trained across various scenes, GNT consistently achieves the state-of-the-art performance when transferring to forward-facing LLFF dataset (LPIPS ~20%&#8595, SSIM ~25%&#8593) and synthetic blender dataset (LPIPS ~20%&#8595, SSIM ~4%&#8593).
+                        In addition, we show that depth and occlusion can be inferred from the learned attention maps, which implies that <i>the pure attention mechanism is capable of learning a physically-grounded rendering process</i>.
+                        All these results bring us one step closer to the tantalizing hope of utilizing transformers as the ``universal modeling tool'' even for graphics.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <center>
+                        <image src="assets/overview.png" class="img-responsive" alt="overview" width="100%" style="max-height: 450px;margin:auto;">
+                    </center>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Overview of Generalizable NeRF Transformer
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Epipolar Geometry Constrained Scene Representation
+                    </h3>
+                    <p class="text-justify">
+                        For the first stage, we propose the <i>view transformer</i> to aggregate coordinate-aligned features from source views. 
+                        To enforce multi-view geometry, we inject the inductive bias of epipolar constraints into the attention mechanism.
+                        Computing attention between every pair of inputs has O(N<sup>2</sup>) memory complexity, which is computational prohibitive when sampling thousands of points at the same time.
+                        Therefore, we propose to only place one read-out token in the query sequence, and let it iteratively summarize features from other data points. This reduces the complexity for each layer up to O(N).
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Attention Driven Volumetric Rendering
+                    </h3>
+                    <p class="text-justify">
+                        Volume rendering has been regarded as a key knob of NeRF's success, which simulates light transport and occlusion in a radiance field.
+                        However, volume rendering still struggles to model sharp surfaces and complex interference patterns, such as specular reflection, refraction, and translucency.
+                        This motivates us to replace the handcrafted rendering function with a data-driven renderer or <i>ray transformer</i> that learns to project a 3D feature field onto 2D images with respect to specified camera poses.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        GNT Interpretation and Visualization
+                    </h3>
+                    <p class="text-justify">
+                        Conceptually, view transformer attempts to find correspondence between the queried points and source views.
+                        The learned attention amounts to a likelihood score that a pixel on the source view is an image of the same point in the 3D space, i.e., no points lies between the target point and the pixel or in other words be occlusion-aware.
+                        <br>
+                        The ray transformer iteratively aggregates features according to the attention value.
+                        This attention value can be regarded as the importance of each point to form the image, which reflects visibility and occlusion reasoned by point-to-point interaction or in other words be depth aware.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <image src="assets/occ_aware.png" width="50%">
+                    <image src="assets/depth_aware.png" width="45%">
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Attention maps obtained from view, ray transformer indicating both occlusion, depth reasoning. With no explicit supervision, GNT learns to physically ground its attention maps.  
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Single Scene Rendering Results
+                    </h3>
+                    <image src="assets/orchids.png" width="100%">
+                    <image src="assets/drums.png" width="100%">
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Qualitative comparison for single-scene rendering. 
+                        GNT recovers the shape of leaves more accurately (in Orchids) and model physical phenomenon like specular reflections (in Drums). 
+                    </p>
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Cross Scene Rendering Results
+                    </h3>
+                    <image src="assets/flowers.png" width="100%">
+                    <image src="assets/ferns.png" width="100%">
+                </div>
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="text-center">
+                        Qualitative comparison for cross-scene generalization. 
+                        GNT recovers the edges of petals more accurately (in Flowers) and handle regions which are sparsely visible in the source views (in Fern). 
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <h3>
+                        Citation
+                    </h3>
+                    <div class="form-group col-md-10 col-md-offset-1">
+                        <textarea id="bibtex" class="form-control" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <footer>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <p class="text-center">
+                    This website is adapted from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div>
+    </footer>
+</html>
