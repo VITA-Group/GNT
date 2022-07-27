@@ -23,7 +23,7 @@ When trained across various scenes, GNT consistently achieves the state-of-the-a
 In addition, we show that depth and occlusion can be inferred from the learned attention maps, which implies that <i>the pure attention mechanism is capable of learning a physically-grounded rendering process</i>.
 All these results bring us one step closer to the tantalizing hope of utilizing transformers as the ``universal modeling tool'' even for graphics.
 
-![teaser](docs/assets/overview2.png)
+![teaser](docs/assets/overview.png)
 
 ## Installation
 
