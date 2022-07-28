@@ -6,7 +6,7 @@
 [Subhashini Venugopalan](https://vsubhashini.github.io/)<sup>3</sup>,
 [Zhangyang Wang](https://vita-group.github.io/)<sup>2</sup>
 
-<sup>1</sup>Indian Institute of Technology Madras, <sup>2</sup>University of Austin at Texas <sup>3</sup>Google Research<br>
+<sup>1</sup>Indian Institute of Technology Madras, <sup>2</sup>University of Texas at Austin <sup>3</sup>Google Research<br>
 
 [Project Page](https://vita-group.github.io/GNT) | [Paper](https://arxiv.org/abs/2207.13298)
 
