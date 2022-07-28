@@ -8,7 +8,7 @@
 
 <sup>1</sup>Indian Institute of Technology Madras, <sup>2</sup>University of Austin at Texas <sup>3</sup>Google Research<br>
 
-[Project Page](https://vita-group.github.io/GNT) | [Paper]()
+[Project Page](https://vita-group.github.io/GNT) | [Paper](https://arxiv.org/abs/2207.13298)
 
 This repository is built based on IBRNet's [offical repository](https://github.com/googleinterns/IBRNet)
 
@@ -113,6 +113,11 @@ unzip nerf_llff_data.zip
 
 If you find our work / code implementation useful for your own research, please cite our paper.
 
-
 ```
+@article{varma2022gnt,
+  title={Is Attention All NeRF Needs?},
+  author={T, Mukund Varma and Wang, Peihao and Chen, Xuxi and Chen, Tianlong and Venugopalan, Subhashini and Wang, Zhangyang},
+  journal={arXiv preprint arXiv:2207.13298},
+  year={2022}
+}
 ```
