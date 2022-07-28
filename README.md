@@ -1,12 +1,14 @@
 # Is Attention All NeRF Needs?
-[Mukund Varma T]()<sup>1</sup>,
-[Peihao Wang](https://peihaowang.github.io/)<sup>2</sup>,
+[Mukund Varma T]()<sup>1*</sup>,
+[Peihao Wang](https://peihaowang.github.io/)<sup>2*</sup>,
 [Xuxi Chen](https://xxchen.site/)<sup>2</sup>,
 [Tianlong Chen](https://tianlong-chen.github.io/)<sup>2</sup>,
 [Subhashini Venugopalan](https://vsubhashini.github.io/)<sup>3</sup>,
 [Zhangyang Wang](https://vita-group.github.io/)<sup>2</sup>
 
 <sup>1</sup>Indian Institute of Technology Madras, <sup>2</sup>University of Texas at Austin <sup>3</sup>Google Research<br>
+
+<sup>*</sup> denotes equal contribution.
 
 [Project Page](https://vita-group.github.io/GNT) | [Paper](https://arxiv.org/abs/2207.13298)
 
