@@ -1,0 +1,37 @@
+### INPUT
+expname = gnt_full
+rootdir = ./
+render_stride = 2
+distributed = False
+
+## dataset
+train_dataset = llff+spaces+ibrnet_collected+realestate+google_scanned
+dataset_weights = [0.3, 0.15, 0.35, 0.15, 0.05]
+eval_dataset = llff_test
+eval_scenes = [trex, fern, flower, leaves, room, fortress, horns, orchids]
+# uncomment to eval on nerf synthetic
+# eval_dataset = nerf_synthetic
+# eval_scenes = [chair, drums, ficus, hotdog, materials, mic, ship, lego]
+
+### TRAINING
+N_rand = 2048
+lrate_feature = 0.001
+lrate_gnt = 0.0005
+lrate_decay_factor = 0.5
+lrate_decay_steps = 50000
+single_net = True
+trans_depth = 8
+
+### TESTING
+chunk_size = 2000
+
+### RENDERING
+N_importance = 0
+N_samples = 64
+inv_uniform = True
+white_bkgd = False
+
+### CONSOLE AND TENSORBOARD
+i_img = 50000
+i_print = 100
+i_weights = 50000

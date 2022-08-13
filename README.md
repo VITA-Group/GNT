@@ -106,7 +106,35 @@ unzip nerf_llff_data.zip
 
 ## Usage
 
-### Training and Evaluation (To be released)
+### Training
+
+```bash
+# single scene
+# python3 train.py --config <config> --train_scenes <scene> --eval_scenes <scene> --optional[other kwargs]. Example:
+python3 train.py --config configs/gnt_blender.txt --train_scenes drums --eval_scenes drums
+python3 train.py --config configs/gnt_llff.txt --train_scenes orchids --eval_scenes orchids
+
+# cross scene
+# python3 train.py --config <config> --optional[other kwargs]. Example:
+python3 train.py --config configs/gnt_full.txt 
+```
+
+To decode coarse-fine outputs set `--N_importance > 0`, and with a separate fine network use `--single_net = False`
+
+### Evaluation
+
+```bash
+# single scene
+# python3 eval.py --config <config> --eval_scenes <scene> --expname <out-dir> --run_val --optional[other kwargs]. Example:
+python3 eval.py --config configs/gnt_llff.txt --eval_scenes orchids --expname gnt_orchids --chunk_size 500 --run_val --N_samples 192
+python3 eval.py --config configs/gnt_blender.txt --eval_scenes drums --expname gnt_drums --chunk_size 500 --run_val --N_samples 192
+
+# cross scene
+# python3 eval.py --config <config> --expname <out-dir> --run_val --optional[other kwargs]. Example:
+python3 eval.py --config configs/gnt_full.txt --expname gnt_full --chunk_size 500 --run_val --N_samples 192
+```
+
+The code has been recently tidied up for release and could perhaps contain tiny bugs. Please feel free to open an issue.
 
 -----
 
