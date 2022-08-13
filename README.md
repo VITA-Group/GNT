@@ -136,8 +136,6 @@ python3 eval.py --config configs/gnt_full.txt --expname gnt_full --chunk_size 50
 
 The code has been recently tidied up for release and could perhaps contain tiny bugs. Please feel free to open an issue.
 
------
-
 
 ## Cite this work
 
