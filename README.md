@@ -132,39 +132,39 @@ To decode coarse-fine outputs set `--N_importance > 0`, and with a separate fine
   <tr>
     <th rowspan=3>LLFF</th>
     <td>Orchids</td>
-    <td><a href="">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/18IgdUBHOshn8Z01PhtI44p8HZcMRIq03?usp=sharing">ckpt</a></td>
     <td><a href="">logs</a></td>
   </tr>
   <tr>
     <td>Trex</td>
-    <td><a href="">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1aFVb-K7dG44lu6J8ufMj0pk2SZEOz8QB?usp=sharing">ckpt</a></td>
     <td><a href="">logs</a></td>
   </tr>
   <tr>
     <td>Horns</td>
-    <td><a href="">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1YCOZCFmtRT7Dd-BJ3SGKUlcVm2fZM0NG?usp=sharing">ckpt</a></td>
     <td><a href="">logs</a></td>
   </tr>
   <tr>
     <th rowspan=3>Synthetic</th>
     <td>Lego</td>
-    <td><a href="">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1PuEnlOD8nAMkfcASiTj_EbMzaKev48Av?usp=sharing">ckpt</a></td>
     <td><a href="">logs</a></td>
   </tr>
   <tr>
     <td>Chair</td>
-    <td><a href="">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/146AQT_kuMG6t_oKW7BIsydNEYLgviwkH?usp=sharing">ckpt</a></td>
     <td><a href="">logs</a></td>
   </tr>
   <tr>
     <td>Drums</td>
-    <td><a href="">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1tv2EXdB1Z5hKPldc6-DY4Se4nImTIPHl?usp=sharing">ckpt</a></td>
     <td><a href="">logs</a><td>
   </tr>
   <tr>
     <td>Generalization</td>
     <td>N.A.</td>
-    <td><a href="">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1wk36MayTv-89EcIUPh5MxiAmvUuD9SR8?usp=sharing">ckpt</a></td>
     <td><a href="">logs</a></td>
   </tr>
 </table>
