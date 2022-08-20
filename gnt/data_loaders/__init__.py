@@ -9,6 +9,7 @@ from .realestate import *
 from .spaces_dataset import *
 from .nerf_synthetic import *
 from .shiny import *
+from .llff_render import *
 
 dataset_dict = {
     "spaces": SpacesFreeDataset,
@@ -19,5 +20,6 @@ dataset_dict = {
     "llff": LLFFDataset,
     "ibrnet_collected": IBRNetCollectedDataset,
     "llff_test": LLFFTestDataset,
+    "llff_render": LLFFRenderDataset,
     "shiny": ShinyDataset,
 }

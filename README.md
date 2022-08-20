@@ -121,6 +121,56 @@ python3 train.py --config configs/gnt_full.txt
 
 To decode coarse-fine outputs set `--N_importance > 0`, and with a separate fine network use `--single_net = False`
 
+### Pre-trained Models
+
+<table>
+  <tr>
+    <th>Dataset</th>
+    <th>Scene</th>
+    <th colspan=2>Download</th>
+  </tr>
+  <tr>
+    <th rowspan=3>LLFF</th>
+    <td>Orchids</td>
+    <td><a href="">ckpt</a></td>
+    <td><a href="">logs</a></td>
+  </tr>
+  <tr>
+    <td>Trex</td>
+    <td><a href="">ckpt</a></td>
+    <td><a href="">logs</a></td>
+  </tr>
+  <tr>
+    <td>Horns</td>
+    <td><a href="">ckpt</a></td>
+    <td><a href="">logs</a></td>
+  </tr>
+  <tr>
+    <th rowspan=3>Synthetic</th>
+    <td>Lego</td>
+    <td><a href="">ckpt</a></td>
+    <td><a href="">logs</a></td>
+  </tr>
+  <tr>
+    <td>Chair</td>
+    <td><a href="">ckpt</a></td>
+    <td><a href="">logs</a></td>
+  </tr>
+  <tr>
+    <td>Drums</td>
+    <td><a href="">ckpt</a></td>
+    <td><a href="">logs</a><td>
+  </tr>
+  <tr>
+    <td>Generalization</td>
+    <td>N.A.</td>
+    <td><a href="">ckpt</a></td>
+    <td><a href="">logs</a></td>
+  </tr>
+</table>
+
+To reuse pretrained models, download the required checkpoints and place in appropriate directory with name - `gnt_<scene-name>` (single scene) or `gnt_<full>` (generalization). Then proceed to evaluation / rendering. 
+
 ### Evaluation
 
 ```bash
@@ -132,6 +182,15 @@ python3 eval.py --config configs/gnt_blender.txt --eval_scenes drums --expname g
 # cross scene
 # python3 eval.py --config <config> --expname <out-dir> --run_val --optional[other kwargs]. Example:
 python3 eval.py --config configs/gnt_full.txt --expname gnt_full --chunk_size 500 --run_val --N_samples 192
+```
+
+### Rendering
+
+To render videos of smooth camera paths for the real forward-facing scenes.
+
+```bash
+# python3 render.py --config <config> --eval_dataset llff_render --eval_scenes <scene> --expname <out-dir> --optional[other kwargs]. Example:
+python3 render.py --config configs/gnt_llff.txt --eval_dataset llff_render --eval_scenes orchids --expname gnt_orchids --chunk_size 500 --N_samples 192
 ```
 
 The code has been recently tidied up for release and could perhaps contain tiny bugs. Please feel free to open an issue.
