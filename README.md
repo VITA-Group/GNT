@@ -1,4 +1,4 @@
-# Is Attention All NeRF Needs?
+# Is Attention All That NeRF Needs?
 [Mukund Varma T]()<sup>1*</sup>,
 [Peihao Wang](https://peihaowang.github.io/)<sup>2*</sup>,
 [Xuxi Chen](https://xxchen.site/)<sup>2</sup>,
