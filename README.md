@@ -3,10 +3,10 @@
 [Peihao Wang](https://peihaowang.github.io/)<sup>2*</sup>,
 [Xuxi Chen](https://xxchen.site/)<sup>2</sup>,
 [Tianlong Chen](https://tianlong-chen.github.io/)<sup>2</sup>,
-[Subhashini Venugopalan](https://vsubhashini.github.io/),
+[Subhashini Venugopalan](https://vsubhashini.github.io/)<sup>3</sup>,
 [Zhangyang Wang](https://vita-group.github.io/)<sup>2</sup>
 
-<sup>1</sup>Indian Institute of Technology Madras, <sup>2</sup>University of Texas at Austin
+<sup>1</sup>Indian Institute of Technology Madras, <sup>2</sup>University of Texas at Austin, <sup>3</sup>Google Research
 
 <sup>*</sup> denotes equal contribution.
 
