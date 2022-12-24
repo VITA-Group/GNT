@@ -15,7 +15,6 @@
 This repository is built based on IBRNet's [offical repository](https://github.com/googleinterns/IBRNet)
 
 <ul>
-  <li><span style="color: red">News!</span> Our updated cross-scene trained checkpoint should generalize to more complex scenes from shiny, even achieve comparable results with per-scene optimized SOTA NLF without further tuning!</li>
   <li><span style="color: red">News!</span> Our work was presented by Prof. Atlas in his <a href="https://mit.zoom.us/rec/play/O-E4BZQZLc4km4Xd9EFXrMleMBPVoxK73HzZwo7iEmndSZb--QJXHoo4apFKWT_VEA09TQSO7p6CkIuw.q0ReKAVz5tfsS2Ye?continueMode=true&_x_zm_rtaid=GwwbZYSBSbqSZaZ-b10Qqw.1666125821172.50b38719911eea3b66d299aac233d421&_x_zm_rhtaid=94">talk</a> at the <a href="https://sites.google.com/view/visionseminar">MIT Vision and Graphics Seminar</a> on 10/17/22.</li>
 </ul>
 
