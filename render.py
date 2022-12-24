@@ -57,7 +57,9 @@ def render(args):
         if not os.path.isfile(f):
             shutil.copy(args.config, f)
 
-    assert args.eval_dataset == "llff_render", ValueError("rendering mode available only for llff dataset")
+    assert args.eval_dataset == "llff_render", ValueError(
+        "rendering mode available only for llff dataset"
+    )
     dataset = dataset_dict[args.eval_dataset](args, scenes=args.eval_scenes)
     loader = DataLoader(dataset, batch_size=1)
     iterator = iter(loader)

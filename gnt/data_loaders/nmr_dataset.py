@@ -39,6 +39,7 @@ def parse_pose(path, num_views):
 
     return intrinsics, c2w_mats
 
+
 class NMRDataset(Dataset):
     def __init__(self, args, mode, scenes=(), random_crop=True, **kwargs):
         self.folder_path = os.path.join(args.rootdir, "data/nmr/")
@@ -48,9 +49,9 @@ class NMRDataset(Dataset):
         self.mode = mode  # train / test / validation
         self.num_source_views = args.num_source_views
         self.random_crop = random_crop
-        
+
         cats = [x for x in glob.glob(os.path.join(self.folder_path, "*")) if os.path.isdir(x)]
-        list_prefix = "softras_" # Train on all categories and eval on them
+        list_prefix = "softras_"  # Train on all categories and eval on them
 
         if mode == "train":
             file_lists = [os.path.join(x, list_prefix + "train.lst") for x in cats]
@@ -79,7 +80,7 @@ class NMRDataset(Dataset):
             curr_paths = sorted(glob.glob(os.path.join(path, "image", "*")))
             self.rgb_paths.append(curr_paths)
 
-            pose_path = os.path.join(path, 'cameras.npz')
+            pose_path = os.path.join(path, "cameras.npz")
             intrinsics, c2w_mats = parse_pose(pose_path, len(curr_paths))
 
             self.poses.append(c2w_mats)
@@ -91,18 +92,18 @@ class NMRDataset(Dataset):
         self.poses = np.stack(self.poses, 0)
         self.intrinsics = np.array(self.intrinsics)
 
-        assert(len(self.rgb_paths) == len(self.poses))
+        assert len(self.rgb_paths) == len(self.poses)
 
         # Default near/far plane depth
         # self.z_near = 1.2
         # self.z_far = 4.0
-        self.z_near = 2.
+        self.z_near = 2.0
         self.z_far = 4.0
 
     def __len__(self):
         # return len(self.intrinsics) * 24
         return len(self.intrinsics)
-        
+
     def __getitem__(self, indx):
         idx = indx
         # idx = indx // 24
@@ -124,11 +125,9 @@ class NMRDataset(Dataset):
             tar_id=render_idx,
             angular_dist_method="vector",
         )
-        nearest_pose_ids = np.random.choice(
-            nearest_pose_ids, self.num_source_views, replace=False
-        )
+        nearest_pose_ids = np.random.choice(nearest_pose_ids, self.num_source_views, replace=False)
 
-        img = imageio.imread(rgb_path).astype(np.float32) / 255.
+        img = imageio.imread(rgb_path).astype(np.float32) / 255.0
         intrinsic[0, 0] *= img.shape[1] / 2.0
         intrinsic[1, 1] *= img.shape[0] / 2.0
         intrinsic[0, 2] = img.shape[1] / 2.0
@@ -151,7 +150,7 @@ class NMRDataset(Dataset):
         src_rgbs = []
         src_cameras = []
         for i, rgb_path in enumerate(src_rgb_paths):
-            rgb = imageio.imread(rgb_path).astype(np.float32) / 255.
+            rgb = imageio.imread(rgb_path).astype(np.float32) / 255.0
             src_rgbs.append(rgb)
             src_camera = np.concatenate(
                 (list(img_size), src_intrinsics[i].flatten(), src_c2w_mats[i].flatten())

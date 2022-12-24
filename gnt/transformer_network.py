@@ -210,10 +210,10 @@ class GNT(nn.Module):
             nn.ReLU(),
             nn.Linear(args.netwidth, args.netwidth),
         )
-        
+
         # NOTE: Apologies for the confusing naming scheme, here view_crosstrans refers to the view transformer, while the view_selftrans refers to the ray transformer
-        self.view_crosstrans = nn.ModuleList([])
         self.view_selftrans = nn.ModuleList([])
+        self.view_crosstrans = nn.ModuleList([])
         self.q_fcs = nn.ModuleList([])
         for i in range(args.trans_depth):
             # view transformer
