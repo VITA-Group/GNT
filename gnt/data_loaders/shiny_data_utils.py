@@ -1,3 +1,4 @@
+from json import load
 import numpy as np
 import os
 import imageio
@@ -90,76 +91,43 @@ def _minify(basedir, factors=[], resolutions=[]):
 
 
 def _load_data(basedir, factor=None, width=None, height=None, load_imgs=True):
-    poses_arr = np.load(os.path.join(basedir, "poses_bounds.npy"))
-    poses = poses_arr[:, :-2].reshape([-1, 3, 4]).transpose([1, 2, 0])
-    bds = poses_arr[:, -2:].transpose([1, 0])
-
-    img0 = [
-        os.path.join(basedir, "images", f)
-        for f in sorted(os.listdir(os.path.join(basedir, "images")))
-        if f.endswith("JPG") or f.endswith("jpg") or f.endswith("png")
-    ][0]
+    poses_arr = np.load(os.path.join(basedir, 'poses_bounds.npy'))
+    intrinsic_arr = np.load(open(os.path.join(basedir, 'hwf_cxcy.npy'), "rb"))
+    poses = poses_arr[:, :-2].reshape([-1, 3, 4]).transpose([1,2,0])
+    bds = poses_arr[:, -2:].transpose([1,0])
+    
+    img0 = [os.path.join(basedir, 'images', f) for f in sorted(os.listdir(os.path.join(basedir, 'images'))) \
+          if f.endswith('JPG') or f.endswith('jpg') or f.endswith('png')][0]
     sh = imageio.imread(img0).shape
 
-    sfx = ""
-
-    if factor is not None and factor != 1:
-        sfx = "_{}".format(factor)
+    sfx = ''
+    if factor is not None:
+        sfx = '_{}'.format(factor)
         _minify(basedir, factors=[factor])
         factor = factor
     elif height is not None:
         factor = sh[0] / float(height)
         width = int(sh[1] / factor)
         _minify(basedir, resolutions=[[height, width]])
-        sfx = "_{}x{}".format(width, height)
+        sfx = '_{}x{}'.format(width, height)
     elif width is not None:
         factor = sh[1] / float(width)
         height = int(sh[0] / factor)
         _minify(basedir, resolutions=[[height, width]])
-        sfx = "_{}x{}".format(width, height)
+        sfx = '_{}x{}'.format(width, height)
     else:
         factor = 1
 
-    imgdir = os.path.join(basedir, "images" + sfx)
+    imgdir = os.path.join(basedir, 'images' + sfx)
     if not os.path.exists(imgdir):
-        print(imgdir, "does not exist, returning")
+        print( imgdir, 'does not exist, returning' )
         return
 
-    imgfiles = [
-        os.path.join(imgdir, f)
-        for f in sorted(os.listdir(imgdir))
-        if f.endswith("JPG") or f.endswith("jpg") or f.endswith("png")
-    ]
-
+    imgfiles = [os.path.join(imgdir, f) for f in sorted(os.listdir(imgdir)) if f.endswith('JPG') or f.endswith('jpg') or f.endswith('png')]
     if poses.shape[-1] != len(imgfiles):
-        imagesfile = os.path.join(basedir, "sparse/0/images.bin")
-        imdata = read_images_binary(imagesfile)
-        imnames = [imdata[k].name[0:-4] for k in imdata]
-        imgfiles = [
-            os.path.join(imgdir, f) for f in sorted(os.listdir(imgdir)) if f[0:-4] in imnames
-        ]
-        print(
-            "{}: Mismatch between imgs {} and poses {} !!!!".format(
-                basedir, len(imgfiles), poses.shape[-1]
-            )
-        )
+        print( 'Mismatch between imgs {} and poses {} !!!!'.format(len(imgfiles), poses.shape[-1]) )
         return
-
-    def imread(f):
-        if f.endswith("png"):
-            return imageio.imread(f, ignoregamma=True)
-        else:
-            return imageio.imread(f)
-
-    if not load_imgs:
-        imgs = None
-    else:
-        imgs = [imread(f)[..., :3] / 255.0 for f in imgfiles]
-        imgs = np.stack(imgs, -1)
-        print("Loaded image data", imgs.shape, poses[:, -1, 0])
-
-    return poses, bds, imgs, imgfiles
-
+    return poses, bds, intrinsic_arr
 
 def normalize(x):
     return x / np.linalg.norm(x)
@@ -175,46 +143,47 @@ def viewmatrix(z, up, pos):
 
 
 def ptstocam(pts, c2w):
-    tt = np.matmul(c2w[:3, :3].T, (pts - c2w[:3, 3])[..., np.newaxis])[..., 0]
+    tt = np.matmul(c2w[:3,:3].T, (pts-c2w[:3,3])[...,np.newaxis])[...,0]
     return tt
 
 
 def poses_avg(poses):
-    hwf = poses[0, :3, -1:]
+    #poses [images, 3, 4] not [images, 3, 5]
+    #hwf = poses[0, :3, -1:]
 
     center = poses[:, :3, 3].mean(0)
     vec2 = normalize(poses[:, :3, 2].sum(0))
     up = poses[:, :3, 1].sum(0)
-    c2w = np.concatenate([viewmatrix(vec2, up, center), hwf], 1)
+    c2w = np.concatenate([viewmatrix(vec2, up, center)], 1)
 
     return c2w
 
 
 def render_path_spiral(c2w, up, rads, focal, zdelta, zrate, rots, N):
     render_poses = []
-    rads = np.array(list(rads) + [1.0])
-    hwf = c2w[:, 4:5]
+    rads = np.array(list(rads) + [1.])
+    #hwf = c2w[:,4:5]
 
-    for theta in np.linspace(0.0, 2.0 * np.pi * rots, N + 1)[:-1]:
-        c = np.dot(
-            c2w[:3, :4],
-            np.array([np.cos(theta), -np.sin(theta), -np.sin(theta * zrate), 1.0]) * rads,
-        )
-        z = normalize(c - np.dot(c2w[:3, :4], np.array([0, 0, -focal, 1.0])))
-        render_poses.append(np.concatenate([viewmatrix(z, up, c), hwf], 1))
+    for theta in np.linspace(0., 2. * np.pi * rots, N+1)[:-1]:
+        c = np.dot(c2w[:3,:4], np.array([np.cos(theta), -np.sin(theta), -np.sin(theta*zrate), 1.]) * rads)
+        z = normalize(c - np.dot(c2w[:3,:4], np.array([0,0,-focal, 1.])))
+        #render_poses.append(np.concatenate([viewmatrix(z, up, c), hwf], 1))
+        render_poses.append(viewmatrix(z, up, c))
     return render_poses
 
 
 def recenter_poses(poses):
-    poses_ = poses + 0
-    bottom = np.reshape([0, 0, 0, 1.0], [1, 4])
+    #poses [images, 3, 4]
+    poses_ = poses+0
+    bottom = np.reshape([0,0,0,1.], [1,4])
     c2w = poses_avg(poses)
-    c2w = np.concatenate([c2w[:3, :4], bottom], -2)
-    bottom = np.tile(np.reshape(bottom, [1, 1, 4]), [poses.shape[0], 1, 1])
-    poses = np.concatenate([poses[:, :3, :4], bottom], -2)
+    c2w = np.concatenate([c2w[:3,:4], bottom], -2)
+
+    bottom = np.tile(np.reshape(bottom, [1,1,4]), [poses.shape[0],1,1])
+    poses = np.concatenate([poses[:,:3,:4], bottom], -2)
 
     poses = np.linalg.inv(c2w) @ poses
-    poses_[:, :3, :4] = poses[:, :3, :4]
+    poses_[:,:3,:4] = poses[:,:3,:4]
     poses = poses_
     return poses
 
@@ -260,7 +229,7 @@ def spherify_poses(poses, bds):
 
     centroid = np.mean(poses_reset[:, :3, 3], 0)
     zh = centroid[2]
-    radcircle = np.sqrt(rad**2 - zh**2)
+    radcircle = np.sqrt(rad ** 2 - zh ** 2)
     new_poses = []
 
     for th in np.linspace(0.0, 2.0 * np.pi, 120):
@@ -299,87 +268,119 @@ def load_llff_data(
     spherify=False,
     path_zflat=False,
     load_imgs=True,
+    render_style='',
+    split_train_val=8
 ):
-    out = _load_data(
-        basedir, factor=factor, load_imgs=load_imgs
-    )  # factor=8 downsamples original imgs by 8x
-    if out is None:
-        return
-    else:
-        poses, bds, imgs, imgfiles = out
+    poses, bds, intrinsic_arr = _load_data(basedir, factor=factor, load_imgs=True) # factor=8 downsamples original imgs by 8
+    print('Loaded', basedir, bds.min(), bds.max())
 
-    # print('Loaded', basedir, bds.min(), bds.max())
-
-    # Correct rotation matrix ordering and move variable dim to axis 0
     poses = np.concatenate([poses[:, 1:2, :], -poses[:, 0:1, :], poses[:, 2:, :]], 1)
     poses = np.moveaxis(poses, -1, 0).astype(np.float32)
-    if imgs is not None:
-        imgs = np.moveaxis(imgs, -1, 0).astype(np.float32)
-        images = imgs
-        images = images.astype(np.float32)
-    else:
-        images = None
-    bds = np.moveaxis(bds, -1, 0).astype(np.float32)
 
-    # Rescale if bd_factor is provided
-    sc = 1.0 if bd_factor is None else 1.0 / (bds.min() * bd_factor)
-    poses[:, :3, 3] *= sc
+    bds = np.moveaxis(bds, -1, 0).astype(np.float32)
+    sc = 1. if bd_factor is None else 1./(bds.min() * bd_factor)
+    poses[:,:3,3] *= sc
     bds *= sc
 
     if recenter:
         poses = recenter_poses(poses)
-
     if spherify:
         poses, render_poses, bds = spherify_poses(poses, bds)
     else:
         c2w = poses_avg(poses)
-        # print('recentered', c2w.shape)
-        # print(c2w[:3, :4])
+        print('recentered', c2w.shape)
 
         ## Get spiral
         # Get average pose
         up = normalize(poses[:, :3, 1].sum(0))
-
+        
+        close_depth, inf_depth = -1, -1
         # Find a reasonable "focus depth" for this dataset
-        close_depth, inf_depth = bds.min() * 0.9, bds.max() * 5.0
-        dt = 0.75
-        mean_dz = 1.0 / (((1.0 - dt) / close_depth + dt / inf_depth))
+        if os.path.exists(os.path.join(basedir, 'planes_spiral.txt')):
+            with open(os.path.join(basedir, 'planes_spiral.txt'), "r") as fi:
+                data = [float(x) for x in fi.readline().split(" ")]
+                dmin, dmax = data[:2]
+                close_depth = dmin * 0.9
+                inf_depth = dmax * 5.0
+        elif os.path.exists(os.path.join(basedir, 'planes.txt')):
+            with open(os.path.join(basedir, 'planes.txt'), "r") as fi:
+                data = [float(x) for x in fi.readline().split(" ")]
+                if len(data) ==3:
+                    dmin, dmax, invz = data
+                elif len(data) ==4:
+                    dmin, dmax, invz, _ = data
+                close_depth = dmin * 0.9
+                inf_depth = dmax * 5.0
+
+        prev_close, prev_inf = close_depth, inf_depth
+        if close_depth < 0 or inf_depth < 0 or render_style == 'llff':
+            close_depth, inf_depth = bds.min()*.9, bds.max()*5.
+
+        
+        if render_style == 'shiny':
+            close_depth, inf_depth = bds.min()*.9, bds.max()*5.
+            if close_depth < prev_close:
+                close_depth = prev_close
+            if inf_depth > prev_inf:
+                inf_depth = prev_inf
+        
+        dt = .75
+        mean_dz = 1./(((1.-dt)/close_depth + dt/inf_depth))
         focal = mean_dz
 
         # Get radii for spiral path
-        shrink_factor = 0.8
-        zdelta = close_depth * 0.2
-        tt = poses[:, :3, 3]  # ptstocam(poses[:3,3,:].T, c2w).T
+        shrink_factor = .8
+        zdelta = close_depth * .2
+        tt = poses[:,:3,3] # ptstocam(poses[:3,3,:].T, c2w).T
         rads = np.percentile(np.abs(tt), 90, 0)
         c2w_path = c2w
         N_views = 120
         N_rots = 2
-        if path_zflat:
-            #             zloc = np.percentile(tt, 10, 0)[2]
-            zloc = -close_depth * 0.1
-            c2w_path[:3, 3] = c2w_path[:3, 3] + zloc * c2w_path[:3, 2]
-            rads[2] = 0.0
-            N_rots = 1
-            N_views /= 2
 
-        # Generate poses for spiral path
-        render_poses = render_path_spiral(
-            c2w_path, up, rads, focal, zdelta, zrate=0.5, rots=N_rots, N=N_views
-        )
+        if path_zflat:
+            zloc = -close_depth * .1
+            c2w_path[:3,3] = c2w_path[:3,3] + zloc * c2w_path[:3,2]
+            rads[2] = 0.
+            N_rots = 1
+            N_views/=2
+        
+        render_poses = render_path_spiral(c2w_path, up, rads, focal, zdelta, zrate=.5, rots=N_rots, N=N_views)
 
     render_poses = np.array(render_poses).astype(np.float32)
+    if split_train_val == 0:
+        # backward compatibilty
 
-    c2w = poses[:, :3, :4]
-    # print('Data:')
-    # print(poses.shape, images.shape, bds.shape)
+        c2w = poses_avg(poses)
 
-    dists = np.sum(np.square(c2w[:, :3, 3] - poses[:, :3, 3]), -1)
-    i_test = np.argmin(dists)
-    # print('HOLDOUT view is', i_test)
-    poses = poses.astype(np.float32)
+        print('Data:')
+        # print(poses.shape, images.shape, bds.shape)
 
-    return images, poses, bds, render_poses, i_test, imgfiles
+        dists = np.sum(np.square(c2w[:3,3] - poses[:,:3,3]), -1)
+        i_test = np.argmin(dists)
+        print('HOLDOUT view is', i_test)
 
+        # images = images.astype(np.float32)
+        poses = poses.astype(np.float32)
+        return None, poses, bds, render_poses, intrinsic_arr, i_test
+    else:
+        # reference_view_id should stay in train set only
+        validation_ids = np.arange(poses.shape[0])
+        validation_ids[::8] = -1
+        validation_ids = validation_ids < 0
+        train_ids = np.logical_not(validation_ids)
+        train_poses = poses[train_ids]
+        train_bds = bds[train_ids]
+        c2w = poses_avg(train_poses)
+
+        dists = np.sum(np.square(c2w[:3,3] - train_poses[:,:3,3]), -1)
+        reference_view_id = np.argmin(dists)
+        reference_depth = train_bds[reference_view_id]
+        webgl = {'c2w': c2w_path,
+                'up': up,
+                'rads': rads,
+                'focal': focal,
+                'zdelta':zdelta}
+        return train_poses, reference_depth, reference_view_id, render_poses, poses, intrinsic, webgl
 
 if __name__ == "__main__":
     scene_path = "/home/qianqianwang/datasets/nerf_llff_data/trex/"

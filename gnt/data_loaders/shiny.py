@@ -37,19 +37,36 @@ class ShinyDataset(Dataset):
         print("loading {} for {}".format(scenes, mode))
         for i, scene in enumerate(scenes):
             scene_path = os.path.join(self.folder_path, scene)
-            _, poses, bds, render_poses, i_test, rgb_files = load_llff_data(
-                scene_path, load_imgs=False, factor=4
+            _, poses, bds, render_poses, intrinsic, i_test = load_llff_data(
+                scene_path, load_imgs=False, factor=8, render_style='', split_train_val=0
             )
+            if len(intrinsic) == 3:
+                H, W, f = intrinsic
+                cx = W / 2.0
+                cy =  H / 2.0
+                fx = f
+                fy = f
+            else:
+                H, W, fx, fy, cx, cy = intrinsic
+            H = H / 8
+            W = W / 8
+            fx = fx / 8
+            fy = fy / 8
+            cx = cx / 8
+            cy = cy / 8
+            image_dir = os.path.join(scene_path, 'images_8')
+            rgb_files = [os.path.join(image_dir, f) for f in sorted(os.listdir(image_dir))]
+            _, c2w_mats = batch_parse_llff_poses(poses)
+
+            intrinsics = np.array([
+                [fx, 0, cx, 0],
+                [0, fy, cy, 0],
+                [0, 0, 1, 0],
+                [0, 0, 0, 1],
+            ]).astype(np.float32)
+            intrinsics = intrinsics[None, :, :].repeat(len(c2w_mats), axis=0)
             near_depth = np.min(bds)
             far_depth = np.max(bds)
-            intrinsics, c2w_mats = batch_parse_llff_poses(poses)
-            intrinsics_arr = np.load(os.path.join(scene_path, "hwf_cxcy.npy"))
-            _, _, fx, fy, cx, cy = intrinsics_arr[:, 0]
-            intrinsic_matrix = np.array(
-                [[fx, 0, -cx, 0], [0, -fy, -cy, 0], [0, 0, 1, 0], [0, 0, 0, 1]]
-            ).astype(np.float32)
-            intrinsics = intrinsic_matrix[None, :, :].repeat(intrinsics.shape[0], axis=0)
-
             i_test = np.arange(poses.shape[0])[:: self.args.llffhold]
             i_train = np.array(
                 [
@@ -153,7 +170,6 @@ class ShinyDataset(Dataset):
             )
 
         depth_range = torch.tensor([depth_range[0] * 0.9, depth_range[1] * 1.6])
-
         return {
             "rgb": torch.from_numpy(rgb[..., :3]),
             "camera": torch.from_numpy(camera),
