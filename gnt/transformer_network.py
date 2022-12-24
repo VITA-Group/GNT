@@ -210,9 +210,10 @@ class GNT(nn.Module):
             nn.ReLU(),
             nn.Linear(args.netwidth, args.netwidth),
         )
-
-        self.view_trans = nn.ModuleList([])
-        self.ray_trans = nn.ModuleList([])
+        
+        # NOTE: Apologies for the confusing naming scheme, here view_crosstrans refers to the view transformer, while the view_selftrans refers to the ray transformer
+        self.view_crosstrans = nn.ModuleList([])
+        self.view_selftrans = nn.ModuleList([])
         self.q_fcs = nn.ModuleList([])
         for i in range(args.trans_depth):
             # view transformer
@@ -222,7 +223,7 @@ class GNT(nn.Module):
                 ff_dp_rate=0.1,
                 attn_dp_rate=0.1,
             )
-            self.view_trans.append(view_trans)
+            self.view_crosstrans.append(view_trans)
             # ray transformer
             ray_trans = Transformer(
                 dim=args.netwidth,
@@ -231,7 +232,7 @@ class GNT(nn.Module):
                 ff_dp_rate=0.1,
                 attn_dp_rate=0.1,
             )
-            self.ray_trans.append(ray_trans)
+            self.view_selftrans.append(ray_trans)
             # mlp
             if i % 2 == 0:
                 q_fc = nn.Sequential(
@@ -286,7 +287,7 @@ class GNT(nn.Module):
 
         # transformer modules
         for i, (crosstrans, q_fc, selftrans) in enumerate(
-            zip(self.view_trans, self.q_fcs, self.ray_trans)
+            zip(self.view_crosstrans, self.q_fcs, self.view_selftrans)
         ):
             # view transformer to update q
             q = crosstrans(q, rgb_feat, ray_diff, mask)

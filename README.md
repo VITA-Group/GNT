@@ -10,9 +10,14 @@
 
 <sup>*</sup> denotes equal contribution.
 
-[Project Page](https://vita-group.github.io/GNT) | [Paper](https://arxiv.org/abs/2207.13298)
+[Project Page](https://vita-group.github.io/GNT) | [Paper](docs/assets/gnt.pdf)
 
 This repository is built based on IBRNet's [offical repository](https://github.com/googleinterns/IBRNet)
+
+<ul>
+  <li><span style="color: red">News!</span> Our updated cross-scene trained checkpoint should generalize to more complex scenes from shiny, even achieve comparable results with per-scene optimized SOTA NLF without further tuning!</li>
+  <li><span style="color: red">News!</span> Our work was presented by Prof. Atlas in his <a href="https://mit.zoom.us/rec/play/O-E4BZQZLc4km4Xd9EFXrMleMBPVoxK73HzZwo7iEmndSZb--QJXHoo4apFKWT_VEA09TQSO7p6CkIuw.q0ReKAVz5tfsS2Ye?continueMode=true&_x_zm_rtaid=GwwbZYSBSbqSZaZ-b10Qqw.1666125821172.50b38719911eea3b66d299aac233d421&_x_zm_rhtaid=94">talk</a> at the <a href="https://sites.google.com/view/visionseminar">MIT Vision and Graphics Seminar</a> on 10/17/22.</li>
+</ul>
 
 ## Introduction
 
@@ -130,46 +135,96 @@ To decode coarse-fine outputs set `--N_importance > 0`, and with a separate fine
     <th colspan=2>Download</th>
   </tr>
   <tr>
-    <th rowspan=3>LLFF</th>
-    <td>Orchids</td>
-    <td><a href="https://drive.google.com/drive/folders/18IgdUBHOshn8Z01PhtI44p8HZcMRIq03?usp=sharing">ckpt</a></td>
-    <td><a href="">logs</a></td>
+    <th rowspan=8>LLFF</th>
+    <td>fern</td>
+    <td><a href="https://drive.google.com/file/d/18wWmOh4v0yFP9Q3nyqpN82N-szYFJrf8/view?usp=sharing">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/12AcHS17HwVfFYMVX_t6dQU5c5jXOxtWg?usp=share_link">renders</a></td>
   </tr>
   <tr>
-    <td>Trex</td>
-    <td><a href="https://drive.google.com/drive/folders/1aFVb-K7dG44lu6J8ufMj0pk2SZEOz8QB?usp=sharing">ckpt</a></td>
-    <td><a href="">logs</a></td>
+    <td>flower</td>
+    <td><a href="https://drive.google.com/file/d/1JPNHvCsQljUDPFZwrZ0KoxJWGgb1ik-H/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1xbVFzEEcJtaFJaewdXvaScUpSDhKpom9?usp=share_link">renders</a></td>
   </tr>
   <tr>
-    <td>Horns</td>
-    <td><a href="https://drive.google.com/drive/folders/1YCOZCFmtRT7Dd-BJ3SGKUlcVm2fZM0NG?usp=sharing">ckpt</a></td>
-    <td><a href="">logs</a></td>
+    <td>fortress</td>
+    <td><a href="https://drive.google.com/file/d/1rDS3Ci0L4mhb2ju-2iqeLwC8fokzuM9I/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1AIkIZw1drGjYyZaK8048FWGjDXhnNaKA?usp=share_link">renders</a></td>
   </tr>
   <tr>
-    <th rowspan=3>Synthetic</th>
-    <td>Lego</td>
-    <td><a href="https://drive.google.com/drive/folders/1PuEnlOD8nAMkfcASiTj_EbMzaKev48Av?usp=sharing">ckpt</a></td>
-    <td><a href="">logs</a></td>
+    <td>horns</td>
+    <td><a href="https://drive.google.com/file/d/13hszXGhJ4Z9k3-NIJ9TlwSpw9c1zuzuW/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1_CeRcd5VLFa1_NWIGu1qp2EN2GEmD3df?usp=share_link">renders</a></td>
   </tr>
   <tr>
-    <td>Chair</td>
-    <td><a href="https://drive.google.com/drive/folders/146AQT_kuMG6t_oKW7BIsydNEYLgviwkH?usp=sharing">ckpt</a></td>
-    <td><a href="">logs</a></td>
+    <td>leaves</td>
+    <td><a href="https://drive.google.com/file/d/1wi4WA39lU0pdhkbyXlFePX9Vz8nSsDpe/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1UXMW9_8eellesWkhP_VcIcC6VQy1QCnB?usp=share_link">renders</a></td>
   </tr>
   <tr>
-    <td>Drums</td>
-    <td><a href="https://drive.google.com/drive/folders/1tv2EXdB1Z5hKPldc6-DY4Se4nImTIPHl?usp=sharing">ckpt</a></td>
-    <td><a href="">logs</a><td>
+    <td>orchids</td>
+    <td><a href="https://drive.google.com/file/d/1RM0eZuF3Jn6Jpfd_LvixVcUaLNtpyKbX/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1Wuxp1_mM8TQh5j8W1GHzGVmFZVbl0gul?usp=share_link">renders</a></td>
   </tr>
   <tr>
-    <td>Generalization</td>
+    <td>room</td>
+    <td><a href="https://drive.google.com/file/d/1DWtcPxMv7UceRkUrnRTKZ_-0RcxSnn12/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1tlNBWH304jyBjbE8NCw1ysvtU53mglLg?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>trex</td>
+    <td><a href="https://drive.google.com/file/d/1j2JQ7MkuWQe8vAaatFfRzFROLTZf9dba/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1pW0Di9nE8q5KqffL7fVze2Wu_Jts8mAW?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <th rowspan=8>Synthetic</th>
+    <td>chair</td>
+    <td><a href="https://drive.google.com/file/d/1kSwVw03Df2JJbl-tkDgt03RcnZ8aXKPP/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1pKeJmH4jMrnjbN3uELVlddfxSzoQDuCz?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>drums</td>
+    <td><a href="https://drive.google.com/file/d/1YgUopHb5LXwmXlB7CDC7DF0bwjprH15W/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/10BAz_FmOFEEySKn__LqVcFVudNCRUie-?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>ficus</td>
+    <td><a href="https://drive.google.com/file/d/1vizXtpTWmmPcZhWOzMXYXwM-7ReQbfuX/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1uDr7ocb-9RlpK9L6vgxbC5d4g53H7WY1?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>hotdog</td>
+    <td><a href="https://drive.google.com/file/d/1kjAi7Ff9lAnBZyWfmvH4APg-Kg508SaZ/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1NHVZFSBIoVkNsrR7teSt7OVVJJVF9oaO?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>lego</td>
+    <td><a href="https://drive.google.com/file/d/1IbhbBr5XfxQz0jSQM3nLX_htTbvc59kj/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1BHzWiCNmGwa2FmgFAqql1SC7jkHM1clK?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>materials</td>
+    <td><a href="https://drive.google.com/file/d/13H6SzaHCj6NbB0BgNkE8kVRjFOZys4dx/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1rxCI5F-36gBUv6wO3REcGZs396YVm_7d?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>mic</td>
+    <td><a href="https://drive.google.com/file/d/1fxHOPPKD1SaSy8aDC3iIDS41Rbkui1r9/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1m64tU7Kl37Y6ToDFrJ65_OcMKbgpVpBq?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>ship</td>
+    <td><a href="https://drive.google.com/file/d/16nLEu0pINfPJ46MbDkxgOEqnWo8hqAAF/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1SQCCDxUdzlBJuagvRMkW0uowshNqY9xV?usp=share_link">renders</a></td>
+  </tr>
+  <tr>
+    <td>generalization</td>
     <td>N.A.</td>
-    <td><a href="https://drive.google.com/drive/folders/1wk36MayTv-89EcIUPh5MxiAmvUuD9SR8?usp=sharing">ckpt</a></td>
-    <td><a href="">logs</a></td>
+    <td><a href="https://drive.google.com/file/d/1AMN0diPeHvf2fw53IO5EE2Qp4os5SkoX/view?usp=share_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1XW-uCao0WRyf5I94pdhW2H2wIcwZPrAu?usp=share_link">renders</a></td>
   </tr>
 </table>
 
-To reuse pretrained models, download the required checkpoints and place in appropriate directory with name - `gnt_<scene-name>` (single scene) or `gnt_<full>` (generalization). Then proceed to evaluation / rendering. 
+To reuse pretrained models, download the required checkpoints and place in appropriate directory with name - `gnt_<scene-name>` (single scene) or `gnt_<full>` (generalization). Then proceed to evaluation / rendering. To facilitate future research, we also provide half resolution renderings of our method on several benchmark scenes. Incase there are issues with any of the above checkpoints, please feel free to open an issue. 
 
 ### Evaluation
 
