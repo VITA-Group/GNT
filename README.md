@@ -1,5 +1,5 @@
 # Is Attention All That NeRF Needs?
-[Mukund Varma T]()<sup>1*</sup>,
+[Mukund Varma T](https://mukundvarmat.github.io/)<sup>1*</sup>,
 [Peihao Wang](https://peihaowang.github.io/)<sup>2*</sup>,
 [Xuxi Chen](https://xxchen.site/)<sup>2</sup>,
 [Tianlong Chen](https://tianlong-chen.github.io/)<sup>2</sup>,
@@ -10,7 +10,7 @@
 
 <sup>*</sup> denotes equal contribution.
 
-[Project Page](https://vita-group.github.io/GNT) | [Paper](docs/assets/gnt.pdf)
+[Project Page](https://vita-group.github.io/GNT) | [Paper](https://arxiv.org/abs/2207.13298)
 
 This repository is built based on IBRNet's [offical repository](https://github.com/googleinterns/IBRNet)
 
