@@ -256,10 +256,12 @@ The code has been recently tidied up for release and could perhaps contain tiny 
 If you find our work / code implementation useful for your own research, please cite our paper.
 
 ```
-@article{varma2022gnt,
-  title={Is Attention All NeRF Needs?},
-  author={T, Mukund Varma and Wang, Peihao and Chen, Xuxi and Chen, Tianlong and Venugopalan, Subhashini and Wang, Zhangyang},
-  journal={arXiv preprint arXiv:2207.13298},
-  year={2022}
+@inproceedings{
+    t2023is,
+    title={Is Attention All That Ne{RF} Needs?},
+    author={Mukund Varma T and Peihao Wang and Xuxi Chen and Tianlong Chen and Subhashini Venugopalan and Zhangyang Wang},
+    booktitle={The Eleventh International Conference on Learning Representations },
+    year={2023},
+    url={https://openreview.net/forum?id=xE-LtsE-xx}
 }
 ```
