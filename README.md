@@ -44,6 +44,7 @@ cd GNT/
 The code is tested with python 3.8, cuda == 11.1, pytorch == 1.10.1. Additionally dependencies include: 
 
 ```bash
+torchvision
 ConfigArgParse
 imageio
 matplotlib
@@ -52,6 +53,8 @@ opencv_contrib_python
 Pillow
 scipy
 imageio-ffmpeg
+lpips
+scikit-image
 ```
 
 ## Datasets
