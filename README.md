@@ -140,90 +140,90 @@ To decode coarse-fine outputs set `--N_importance > 0`, and with a separate fine
   <tr>
     <th rowspan=8>LLFF</th>
     <td>fern</td>
-    <td><a href="https://drive.google.com/file/d/18wWmOh4v0yFP9Q3nyqpN82N-szYFJrf8/view?usp=sharing">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/12AcHS17HwVfFYMVX_t6dQU5c5jXOxtWg?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/15rpT4iUb21JL-IwQxpzNhdu84HByJusP/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1y3eHIHgVsT9NIRZ0KhSYT7xhhu6ded9Z?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>flower</td>
-    <td><a href="https://drive.google.com/file/d/1JPNHvCsQljUDPFZwrZ0KoxJWGgb1ik-H/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1xbVFzEEcJtaFJaewdXvaScUpSDhKpom9?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/11A-L6rRpf4rLyYK296rm9LpaXc57zkx1/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1bSwJlIo_ntYlYQ4jno9ZgciQeNI3olZk?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>fortress</td>
-    <td><a href="https://drive.google.com/file/d/1rDS3Ci0L4mhb2ju-2iqeLwC8fokzuM9I/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1AIkIZw1drGjYyZaK8048FWGjDXhnNaKA?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1WnCpevgpEmWKLYxcgg8emNK9uU_jFzS8/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1GzQ71O-Mh81ckut-S8RqwRuSuEbR7uYE?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>horns</td>
-    <td><a href="https://drive.google.com/file/d/13hszXGhJ4Z9k3-NIJ9TlwSpw9c1zuzuW/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1_CeRcd5VLFa1_NWIGu1qp2EN2GEmD3df?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1Zq4sKLLUgiO74FxqLLW1-PT1ycB-byzG/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1SRpybO5aFkmB50spFjAzgU_WpTfngtZC?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>leaves</td>
-    <td><a href="https://drive.google.com/file/d/1wi4WA39lU0pdhkbyXlFePX9Vz8nSsDpe/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1UXMW9_8eellesWkhP_VcIcC6VQy1QCnB?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1bBR7Rg-Dx3lfZxEHjkHExjPH4jjdfVzM/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1ZZGDvdvH12rpFgXroJ0yuxxTrQAqLpwa?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>orchids</td>
-    <td><a href="https://drive.google.com/file/d/1RM0eZuF3Jn6Jpfd_LvixVcUaLNtpyKbX/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1Wuxp1_mM8TQh5j8W1GHzGVmFZVbl0gul?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1976YpBEdHpWpcdtAmSzlCfSku91FyX5O/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1FyZZcOicxdOv6pUHdOuJShW2kOxlpmxv?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>room</td>
-    <td><a href="https://drive.google.com/file/d/1DWtcPxMv7UceRkUrnRTKZ_-0RcxSnn12/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1tlNBWH304jyBjbE8NCw1ysvtU53mglLg?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1WwjchNCtYfF8iNnoxyprvOEI9Ziivgxl/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1nKE4q52jMwyekI7LJN1e0t0mLUZDEHWY?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>trex</td>
-    <td><a href="https://drive.google.com/file/d/1j2JQ7MkuWQe8vAaatFfRzFROLTZf9dba/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1pW0Di9nE8q5KqffL7fVze2Wu_Jts8mAW?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/11ArQm9Wf6mYBLQor9t8Bh8LEGYwCXgXM/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1SKhH_SPMH6KFLw0YEHUiofCPp5pAYR8y?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <th rowspan=8>Synthetic</th>
     <td>chair</td>
-    <td><a href="https://drive.google.com/file/d/1kSwVw03Df2JJbl-tkDgt03RcnZ8aXKPP/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1pKeJmH4jMrnjbN3uELVlddfxSzoQDuCz?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1MD8I2lIKIsYD0FlYZqT_0bGz5ykHOH3A/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1xpfz6vZ-8a3rlL62dMbKifGtiHk34va_?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>drums</td>
-    <td><a href="https://drive.google.com/file/d/1YgUopHb5LXwmXlB7CDC7DF0bwjprH15W/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/10BAz_FmOFEEySKn__LqVcFVudNCRUie-?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1pS0iVrfqaSSO03qg4n4R9_IIXBV6ebGC/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1yON62piFrfpd-mMdzhkB7YlhvsEF4W2B?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>ficus</td>
-    <td><a href="https://drive.google.com/file/d/1vizXtpTWmmPcZhWOzMXYXwM-7ReQbfuX/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1uDr7ocb-9RlpK9L6vgxbC5d4g53H7WY1?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1cBNWd6UlpkyHAG7K0CbBu5LKR8sxulDr/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1ip98zv_wMLs1e3EhTMj_ZTCtVKxtfNnZ?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>hotdog</td>
-    <td><a href="https://drive.google.com/file/d/1kjAi7Ff9lAnBZyWfmvH4APg-Kg508SaZ/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1NHVZFSBIoVkNsrR7teSt7OVVJJVF9oaO?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1TXd-CkYXC-thULyKqbIk2ADrZfYZwISt/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1REoU08rwN3Yf6y3-4WpsOiqbZZjX3qq4?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>lego</td>
-    <td><a href="https://drive.google.com/file/d/1IbhbBr5XfxQz0jSQM3nLX_htTbvc59kj/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1BHzWiCNmGwa2FmgFAqql1SC7jkHM1clK?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1z2-sAhKskShU3UiQ3zC2ih8lfyvG5Qx-/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/13_OHY1V_1E-PxiJ1fduCjNauEMe-bzGf?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>materials</td>
-    <td><a href="https://drive.google.com/file/d/13H6SzaHCj6NbB0BgNkE8kVRjFOZys4dx/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1rxCI5F-36gBUv6wO3REcGZs396YVm_7d?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1kD_aLM8Jy1mzQ-4KYbHieRIiwuYwNH3P/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1818ONEF-m2J2pVPhhT5E7EffFW7yqZcZ?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>mic</td>
-    <td><a href="https://drive.google.com/file/d/1fxHOPPKD1SaSy8aDC3iIDS41Rbkui1r9/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1m64tU7Kl37Y6ToDFrJ65_OcMKbgpVpBq?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1d6ua5e1zWVsXQ1byVDEyyUWd0vov0gSN/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1a59vpXVkeSLLW-vVyVbLst2fQ53xE5Qv?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>ship</td>
-    <td><a href="https://drive.google.com/file/d/16nLEu0pINfPJ46MbDkxgOEqnWo8hqAAF/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1SQCCDxUdzlBJuagvRMkW0uowshNqY9xV?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/187xCdD35dbfUxBYOQP4WYIQshuheU-z4/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1SaGxhMhlx2aZVrYGaXG9CxDT9J7ZMcnS?usp=drive_link">renders</a></td>
   </tr>
   <tr>
     <td>generalization</td>
     <td>N.A.</td>
-    <td><a href="https://drive.google.com/file/d/1AMN0diPeHvf2fw53IO5EE2Qp4os5SkoX/view?usp=share_link">ckpt</a></td>
-    <td><a href="https://drive.google.com/drive/folders/1XW-uCao0WRyf5I94pdhW2H2wIcwZPrAu?usp=share_link">renders</a></td>
+    <td><a href="https://drive.google.com/file/d/1YvOJXa5eGpKgoMYcxC2ma7prB1n5UwRn/view?usp=drive_link">ckpt</a></td>
+    <td><a href="https://drive.google.com/drive/folders/1v8AGaldveu04XTVKBKXEgFBxFHbaznto?usp=drive_link">renders</a></td>
   </tr>
 </table>
 
